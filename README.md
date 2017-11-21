@@ -6,11 +6,12 @@ Used to read configuration files in golang.
 ### Syntax
 
 ```go
+config "github.com/Amitgb14/configfile"
 
-	content, err := config.Yaml(configFile)
-	if err != nil {
-		log.Fatalf("Read config: %v", err, content)
-	}
+content, err := config.Yaml(configFile)
+if err != nil {
+	log.Fatalf("Read config: %v", err, content)
+}
 ```
 
 ```yaml
