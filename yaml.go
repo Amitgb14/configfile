@@ -1,18 +1,18 @@
 package configfile
 
 import (
-"io/ioutil"
-"log"
+	"io/ioutil"
+	"log"
 
-"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v2"
 )
 
 // Parameter describe a YAML config file.
 type Parameter struct {
 	Host     string              `yaml:"host,omitempty"`
 	Port     int                 `yaml:"port,omitempty"`
-	SSL	     bool                `yaml:"ssl,omitempty"`
-	Token	 string              `yaml:"token,omitempty"`
+	SSL      bool                `yaml:"ssl,omitempty"`
+	Token    string              `yaml:"token,omitempty"`
 	Thread   int                 `yaml:"thread,omitempty"`
 	Loop     int                 `yaml:"loop,omitempty"`
 	Include  []string            `yaml:"include,omitempty"`
@@ -24,7 +24,7 @@ func Read(filename string) (*Parameter, error) {
 	var parameter Parameter
 	source, err := ioutil.ReadFile(filename)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 	err = yaml.Unmarshal(source, &parameter)
 	if err != nil {
@@ -55,4 +55,3 @@ func Yaml(filename string) (*Parameter, error) {
 
 	return contents, nil
 }
-
